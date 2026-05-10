@@ -1,0 +1,44 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <omp.h>
+#include "timer.h"
+#include <time.h>
+#include <string.h>
+#include <stdbool.h>
+
+typedef struct {
+    int rows; // number of rows (matrix is square: rows = columns)
+    int nnz; // number of non zero values
+    int *row_idx;   // row index
+    int *col_idx;   // column_index
+    int *values;
+} CSR;
+
+// builds the square matrix with the according percentage of zero-values
+void build_table(int **table, const int table_size, const int percent);
+
+// builds the random vector
+void build_vector(int *vector, const int table_size);
+
+// build the csr table
+
+
+
+// functions for csr creation and multiplying methods SERIALLY
+CSR serial_build_csr_table(int **table, const int N);
+void dense_serial_multiply(int **table, int *vector, int *result, int N);
+void csr_serial_multiply(CSR *csr, int *vector, int *result);
+
+// functions for csr creation and multiplying methods PARALLELLY
+CSR parallel_build_csr_table(int **table, const int N);
+void dense_parallel_multiply(int **table, int *vector, int *result, int N);
+void csr_parallel_multiply(CSR *csr, int *vector, int *result);
+
+// print functions for debugging
+void print_result_vector(const int *result, int size);
+void print_csr(const CSR *csr);
+void print_table(int **table, int table_size);
+void print_vector(int *vector, int table_size);
+
+void swap_vectors(int **vec_in, int **vec_out);
+bool sanity_check(const int *serial_dense, const int *serial_csr, const int *parallel_dense, const int *parallel_csr, int N);
