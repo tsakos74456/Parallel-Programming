@@ -1,0 +1,12 @@
+{
+    "files.associations": {
+        "time.h": "c",
+        "pthread.h": "c",
+        "increase_mutex.h": "c",
+        "cstdlib": "c",
+        "stdlib.h": "c",
+        "timer.h": "c",
+        "functions_bank_threads.h": "c",
+        "stdio.h": "c"
+    }
+}
